@@ -3,10 +3,8 @@
 namespace App\Http\Requests\favorites;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'titulo'=>'required|max:255',
-            'url'=> ['required', 'max:255', 'url', Rule::unique('favorites')->where(function ($query) {
-                return $query->where('user_id', Auth::user()->id);
-            })],
+            'url'=> 'required|max:255|url',
             'tema'=>'required|max:255',
         ];
     }
@@ -42,7 +38,7 @@ class StoreRequest extends FormRequest
             'titulo.max'=>'El valor de este campo no puede exceder los 255 caracteres',
 
             'url.required'=>'Este campo es requerido',
-            'url.unique'=>'Esta URL ya existe entre tus favoritos',
+            'url.max'=>'El valor de este campo no puede exceder los 255 caracteres',
             'url.url'=>'La direccion URL es incorrecta',
 
             'tema.required'=>'Este campo es requerido',

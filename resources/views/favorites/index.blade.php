@@ -1,18 +1,12 @@
 @extends('layouts.app')
+@section('title', 'Lista de favotitos')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{asset('media/libs/DataTables/datatables.min.css')}}"/>
-    <style type="text/css">
-        .unstyled-button{
-            border: none;
-            padding: 0;
-            background: none;
-        }
-    </style>
 @endsection
 @section('content')
 <div class="content-wrapper col-8 text-center">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <a href="{{route('favorites.create')}}" class="btn btn-primary btn-icon-split">
+        <a href="{{route('favorites.create')}}" class="btn btn-primary primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>

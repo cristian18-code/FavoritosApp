@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Favoritos') }}</title>
+    <title>@yield('title') | {{ config('app.name', 'FavoritosApp') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" async></script>
@@ -27,7 +27,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-gradient navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark primary navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Favoritos') }}
@@ -37,27 +37,25 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <div class="container-fluid">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <div class="navbar-nav">
-                                <a class="nav-link" aria-current="page" href="#">{{__('Home')}}</a>
-                                <a class="nav-link" href="#">Agregar</a>
+                    @auth
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse show" id="navbarNavAltMarkup">
+                                    <div class="navbar-nav">
+                                    <a class="nav-link" aria-current="page" href="{{route('favorites.index')}}">{{__('Home')}}</a>
+                                    <a class="nav-link" href="{{route('favorites.create')}}">Agregar</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </ul>
-
+                        </ul>
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
+                                <li class="nav-item color-blank">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif

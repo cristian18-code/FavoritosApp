@@ -20,7 +20,7 @@ class CreateFavoritesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('titulo');
             $table->text('tema');
-            $table->string('url')->unique();
+            $table->string('url');
 
             $table->timestamps();
         });
