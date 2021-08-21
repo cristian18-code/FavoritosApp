@@ -15,8 +15,8 @@ class FavoriteController extends Controller
     
     public function index()
     {
-        $favorites = Favorite::where('user_id', Auth::user()->id);
-        return view('favorites.index');
+        $favorites = Favorite::get()->where('user_id', Auth::user()->id);
+        return view('favorites.index', compact('favorites'));
     }
 
     public function create()

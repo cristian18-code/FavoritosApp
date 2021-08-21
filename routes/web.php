@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('favorites.index');
-});
+Route::get('/', [FavoriteController::class, 'index']);
 
 Route::resource('favorites', FavoriteController::class)->names('favorites');
 
