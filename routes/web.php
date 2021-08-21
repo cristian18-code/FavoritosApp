@@ -20,5 +20,3 @@ Route::get('/', [FavoriteController::class, 'index']);
 Route::resource('favorites', FavoriteController::class)->names('favorites');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

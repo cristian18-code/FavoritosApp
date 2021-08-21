@@ -31,7 +31,7 @@ class FavoriteController extends Controller
         Favorite::create($request->all()+[
             'user_id'=>Auth::user()->id,
         ]);
-        return redirect()->route('favorites.index');
+        return redirect()->route('favorites.index')->with('status', 'Se ha añadido '.$request->titulo.' a tus favoritos');
     }
 
     public function show(Favorite $favorite)
@@ -47,7 +47,7 @@ class FavoriteController extends Controller
     public function update(UpdateRequest $request, Favorite $favorite)
     {
         $favorite->update($request->all()+[]);
-        return redirect()->route('favorites.index');
+        return redirect()->route('favorites.index')->with('status', 'Se ha editado '.$request->titulo. ' con exito');
     }
 
     public function destroy(Favorite $favorite)

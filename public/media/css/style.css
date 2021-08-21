@@ -9,3 +9,6 @@
 .navbar-dark .navbar-nav .nav-link {
     color: aliceblue;
 }
+textarea {
+    resize: none;
+}

@@ -91,7 +91,10 @@
 
         <main class="col-12 py-4">
             <div class="row justify-content-center m-0">
-                @yield('content')
+                <div class="content-wrapper col-8">
+                    @include('partials.status-session')
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>
